@@ -1,4 +1,4 @@
-## Libraries
+## Libraries in Dropwizard
 Dropwizard集成了Java生态系统中各个问题域中最优秀的组件，帮助开发者快速的打造一个Rest风格的后台服务。
 - Jetty for HTTP: 每一个应用程序被打包成一个jar（而不是war）文件，并开始自己的嵌入式Jetty容器。没有任何war文件和外部servlet容器。
 - Jersey for REST: Jersey（JAX-RS的参考实现）是用来写基于REST的Web服务的。
@@ -27,4 +27,8 @@ Dropwizard 从log4j切换到LogBack，而Spring boot提供 Logback, log4j 和 lo
 
 两者都有很强很大的社区支持。如果你更喜欢轻量，无疑Dropwizard胜出，如果你已经有Spring经验，无疑使用Spring Boot。
 
+
+## Dropwizard RESTful Service
+用Dropwizard写一个RESTful Service至少需要这么几个部分：一是Configuration，二是Service，然后是Resource。因为Dropwizard中已经包括了最常用和最好用的几个开源库，这样编写一个Service会方便和快捷很多。Configuration主要是作为Serivce本身的配置，通过Service可以访问对应的Resource。
+- Configration
 

@@ -6,6 +6,8 @@
 - Getting Started with Dropwizard: First Steps
     - https://dzone.com/articles/getting-started-dropwizard
 
+- Maven in 10 Minutes
+    - https://javapapers.com/jee/maven-in-10-minutes/
 
 - https://howtodoinjava.com/dropwizard/tutorial-and-hello-world-example/
 
