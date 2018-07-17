@@ -32,3 +32,11 @@ Dropwizard 从log4j切换到LogBack，而Spring boot提供 Logback, log4j 和 lo
 用Dropwizard写一个RESTful Service至少需要这么几个部分：一是Configuration，二是Service，然后是Resource。因为Dropwizard中已经包括了最常用和最好用的几个开源库，这样编写一个Service会方便和快捷很多。Configuration主要是作为Serivce本身的配置，通过Service可以访问对应的Resource。
 - Configration
 
+## Dropwizard dependencies
+```
+    <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-core</artifactId>
+        <version>0.8.5</version>
+    </dependency>
+```
