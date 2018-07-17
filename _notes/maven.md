@@ -27,15 +27,7 @@ There are 3 built-in build life cycle ‘clean’, ‘default’ and ‘site’.
   Local repository: 在Mac上，它的位置在~/.m2/repository
   当maven查找需要的jar文件时，它会先在本地库中查找，只有在找不到的情况下，才会去远程库中找的
 
-http://maven.aliyun.com/nexus/content/groups/public/
-
-作者：国士无双A
-链接：https://www.jianshu.com/p/39875424be3c
-來源：简书
-简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
-
-
-##  Create Dropwizard project
+## Create Dropwizard project
 The simplest way to create a Dropwizard project is to use the **Maven archetype** called java-simple which is a part of Dropwizard. 
 ```
 mvn archetype:generate
@@ -56,8 +48,25 @@ mvn archetype:generate
     -DinteractiveMode=false
 ```
 
+## Build
+In the <build><plugins> section of your pom.xml file, add some config (https://www.dropwizard.io/0.9.1/docs/getting-started.html)
+
+This configures Maven to do a couple of things during its package phase:
+- Produce a pom.xml file which doesn’t include dependencies for the libraries whose contents are included in the fat JAR.
+- Exclude all digital signatures from signed JARs. If you don’t, then Java considers the signature invalid and won’t load or run your JAR file.
+- Collate the various META-INF/services entries in the JARs instead of overwriting them. (Neither Dropwizard nor Jersey works without those.)
+- Set JAR’s MainClass. This will allow you to run the JAR using java -jar.
+
+```
+    mvn package
+    mvn clean package
+```
+
+
 ## Run application
-  java -jar dropwizard-demo-standalone.jar server hello.yaml
-
-
+```
+  java -jar target/DropWizardStudy-1.0-SNAPSHOT.jar server config.yaml
+```
+Dropwizard takes the first command line argument and dispatches it to a matching command.
+In this case, the only command available is server, which runs your application as an HTTP server and requires a configuration file,
 
