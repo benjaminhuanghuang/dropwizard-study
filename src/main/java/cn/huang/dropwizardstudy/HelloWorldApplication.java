@@ -1,4 +1,4 @@
-package com.study.dropwizarddemo;
+package cn.huang.dropwizardstudy;
 
 /**
  * Hello world!
@@ -12,11 +12,11 @@ package com.study.dropwizarddemo;
 //     }
 // }
 
+import cn.huang.dropwizardstudy.health.TemplateHealthCheck;
+import cn.huang.dropwizardstudy.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import com.study.dropwizarddemo.resources.HelloWorldResource;
-import com.study.dropwizarddemo.health.TemplateHealthCheck;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
     public static void main(String[] args) throws Exception {

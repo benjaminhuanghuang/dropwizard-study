@@ -1,4 +1,4 @@
-package com.study.dropwizarddemo.api;
+package cn.huang.dropwizardstudy.api;
 
 public class BlogPost {
     long id;

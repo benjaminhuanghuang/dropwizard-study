@@ -1,4 +1,4 @@
-package com.study.dropwizarddemo.health;
+package cn.huang.dropwizardstudy.health;
 
 import com.codahale.metrics.health.HealthCheck;
 

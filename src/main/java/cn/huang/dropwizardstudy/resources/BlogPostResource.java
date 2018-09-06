@@ -1,7 +1,7 @@
-package com.study.dropwizarddemo.resources;
+package cn.huang.dropwizardstudy.resources;
 
-import com.study.dropwizarddemo.BlogPostConfig;
-import com.study.dropwizarddemo.api.BlogPost;
+import cn.huang.dropwizardstudy.api.BlogPost;
+import cn.huang.dropwizardstudy.BlogPostConfig;
 import com.codahale.metrics.annotation.Timed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,7 +1,7 @@
-package com.study.dropwizarddemo.resources;
+package cn.huang.dropwizardstudy.resources;
 
 
-import com.study.dropwizarddemo.api.Saying;
+import cn.huang.dropwizardstudy.api.Saying;
 
 import com.google.common.base.Optional;
 import com.codahale.metrics.annotation.Timed;

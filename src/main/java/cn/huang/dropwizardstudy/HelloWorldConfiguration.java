@@ -1,4 +1,4 @@
-package com.study.dropwizarddemo;
+package cn.huang.dropwizardstudy;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;

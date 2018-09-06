@@ -1,6 +1,6 @@
-package com.study.dropwizarddemo;
+package cn.huang.dropwizardstudy;
 
-import com.study.dropwizarddemo.resources.BlogPostResource;
+import cn.huang.dropwizardstudy.resources.BlogPostResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
