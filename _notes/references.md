@@ -8,6 +8,9 @@
 
 - https://howtodoinjava.com/dropwizard/tutorial-and-hello-world-example/
 
+
+- Dropwizard setup on IntelliJ Idea
+
 ## Maven Reference
 - Maven in 10 Minutes
     - https://javapapers.com/jee/maven-in-10-minutes/

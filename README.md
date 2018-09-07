@@ -2,7 +2,8 @@
 
 
 ## Features
-- Restful API 
+- Restful API
+- Health checking
 - Swagger
 - Auth
 - Unit test
