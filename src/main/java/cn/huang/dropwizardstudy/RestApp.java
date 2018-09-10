@@ -13,11 +13,10 @@ public class RestApp extends Application<RestServiceConfig> {
 
     @Override
     public void run(RestServiceConfig config, Environment env) {
-        final PersonService personService = new PersonService();
+        // Register services
+        env.jersey().register(new PersonService());
 
-        env.jersey().register(personService);
-
-        env.healthChecks().register("template",
-                new RestCheck(config.getVersion()));
+        // Register health check
+        env.healthChecks().register("template", new RestCheck(config.getVersion()));
     }
 }

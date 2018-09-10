@@ -1,9 +1,5 @@
 package integration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import cn.huang.test.utilities.RestTestUtilities;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
@@ -24,6 +20,8 @@ import com.google.gson.Gson;
 
 import cn.huang.dropwizardstudy.data.Person;
 import integration.supporting.Auth;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit test for simple App.
@@ -64,14 +62,22 @@ public class PersonServiceIT {
 //                .header("Authorization", token)
                 .get();
 
+        // Has response
         assertNotNull(response);
 
+        // Check response status
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
 
+        // Read response body
         String actualOutput = response.readEntity(String.class);
         assertNotNull(actualOutput);
-//        String expectedOutput = RestTestUtilities.readPayloadsFromResource("all-person.response.json");
-//        assertTrue(assertResponseJson(expectedOutput, actualOutput));
+
+        // Deserialize response and compare with test data
+        Gson gson = new Gson();
+        Person[] actualPersonArray = gson.fromJson(actualOutput, Person[].class);
+        String expectedOutputJson = RestTestUtilities.readPayloadsFromResource("all-person.response.json");
+        Person[] expetedPersonArray = gson.fromJson(expectedOutputJson, Person[].class);
+        assertArrayEquals(expetedPersonArray, actualPersonArray);
     }
 
     @Test
@@ -88,16 +94,5 @@ public class PersonServiceIT {
         assertNotNull(actualOutput);
         String expectedOutput = RestTestUtilities.readPayloadsFromResource("1.create-person.response.json");
         assertTrue(assertResponseJson(expectedOutput, actualOutput));
-    }
-
-    private Person deserializeResponse(String responseBody) {
-        Gson gson = new Gson();
-        return gson.fromJson(responseBody, Person.class);
-    }
-
-    private boolean assertResponseJson(String expected, String actual) {
-        Person expectedOutputLocations = deserializeResponse(expected);
-        Person actualOutputLocations = deserializeResponse(actual);
-        return expectedOutputLocations.equals(actualOutputLocations);
     }
 }

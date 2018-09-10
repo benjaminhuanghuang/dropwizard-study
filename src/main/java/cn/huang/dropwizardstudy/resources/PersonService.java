@@ -16,7 +16,7 @@ public class PersonService {
 
     @GET
     @Timed
-    @Path("/get/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Person getPerson(@PathParam("id") int id) {
         return PersonDB.getById(id);
