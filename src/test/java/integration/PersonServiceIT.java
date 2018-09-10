@@ -99,7 +99,6 @@ public class PersonServiceIT {
 
     @Test
     public void shouldGetPersonById() throws Exception {
-        String request = RestTestUtilities.readPayloadsFromResource("create-person.request.json");
         Response response = client.target("http://localhost:8888/person/1")
                 .request(MediaType.APPLICATION_JSON)
 //                .header("Authorization", token)
