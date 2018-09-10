@@ -42,8 +42,8 @@ public class PersonService {
     @POST
     @Timed
     @Path("/save")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public String addPerson(Person person) {
         return PersonDB.save(person);
     }

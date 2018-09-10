@@ -76,13 +76,13 @@ public class PersonServiceIT {
         Gson gson = new Gson();
         Person[] actualPersonArray = gson.fromJson(actualOutput, Person[].class);
         String expectedOutputJson = RestTestUtilities.readPayloadsFromResource("all-person.response.json");
-        Person[] expetedPersonArray = gson.fromJson(expectedOutputJson, Person[].class);
-        assertArrayEquals(expetedPersonArray, actualPersonArray);
+        Person[] expectedPersonArray = gson.fromJson(expectedOutputJson, Person[].class);
+        assertArrayEquals(expectedPersonArray, actualPersonArray);
     }
 
     @Test
     public void shouldCreatePerson() throws Exception {
-        String request = RestTestUtilities.readPayloadsFromResource("1.create-person.request.json");
+        String request = RestTestUtilities.readPayloadsFromResource("create-person.request.json");
         Response response = client.target("http://localhost:8888/person/save")
                 .request(MediaType.APPLICATION_JSON)
 //                .header("Authorization", token)
@@ -92,7 +92,30 @@ public class PersonServiceIT {
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         String actualOutput = response.readEntity(String.class);
         assertNotNull(actualOutput);
-        String expectedOutput = RestTestUtilities.readPayloadsFromResource("1.create-person.response.json");
-        assertTrue(assertResponseJson(expectedOutput, actualOutput));
+
+        String expectedOutput = RestTestUtilities.readPayloadsFromResource("create-person.response.json");
+        assertEquals(actualOutput, expectedOutput);
+    }
+
+    @Test
+    public void shouldGetPersonById() throws Exception {
+        String request = RestTestUtilities.readPayloadsFromResource("create-person.request.json");
+        Response response = client.target("http://localhost:8888/person/1")
+                .request(MediaType.APPLICATION_JSON)
+//                .header("Authorization", token)
+                .get();
+
+        assertNotNull(response);
+        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
+        String actualOutput = response.readEntity(String.class);
+        assertNotNull(actualOutput);
+
+        Gson gson = new Gson();
+        Person actualPerson = gson.fromJson(actualOutput, Person.class);
+
+        String expectedOutput = RestTestUtilities.readPayloadsFromResource("get-person-by-id.response.json");
+        Person expectedPerson = gson.fromJson(expectedOutput, Person.class);
+
+        assertEquals(actualPerson, expectedPerson);
     }
 }
